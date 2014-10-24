@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directive Restrictions</title>
+</head>
+<body>
+
+<div ng-app="superhero">
+  <div superman></div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+<script type="text/javascript">
+
+  var myApp = angular.module("superhero", []);
+
+  myApp.directive('superman', function () {
+    return {
+      restrict: "A",
+      link: function () {
+        alert("I'm working");
+      }
+    }
+  });
+</script>
+</body>
+</html>

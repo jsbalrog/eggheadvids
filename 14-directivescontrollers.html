@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directives Talking to Controllers</title>
+</head>
+<body>
+<div ng-app="twitterApp">
+  <div ng-controller="AppCtrl">
+  <div ng-enter>Load tweets</div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+<script type="text/javascript">
+  var myApp = angular.module('twitterApp', []);
+
+  myApp.controller("AppCtrl", function ($scope) {
+    $scope.loadMoreTweets = function () {
+      console.log("Loading tweets!");
+    }
+  });
+
+  myApp.directive("enter", function () {
+    return function (scope, element, attrs) {
+      element.bind("mouseenter", function () {
+        scope.loadMoreTweets();
+      });
+    }
+  });
+</script>
+</body>
+</html>

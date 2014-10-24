@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Useful Behaviors</title>
+
+  <style type="text/css">
+    .panel {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+
+<div ng-app="behaviorApp">
+  <div enter="panel" leave>I'm content</div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+<script type="text/javascript">
+  var app = angular.module("behaviorApp", []);
+
+  app.directive("enter", function () {
+    // syntactic sugar for return link: { function() }
+    return function(scope, element, attrs) {
+      element.bind("mouseenter", function() {
+        element.addClass(attrs.enter)
+      })
+    }
+  });
+
+  app.directive("leave", function () {
+    // syntactic sugar for return link: { function() }
+    return function(scope, element, attrs) {
+      element.bind("mouseleave", function() {
+        element.removeClass(attrs.enter)
+      })
+    }
+  });
+</script>
+</body>
+</html>

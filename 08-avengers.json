@@ -1,0 +1,18 @@
+[
+  {
+    name: "Robert Downey Jr.",
+    character: "Tony Stark / Iron Man"
+  },
+  {
+    name: "Chris Evans",
+    character: "Steve Rogers / Captain America"
+  },
+  {
+    name: "Mark Ruffalo",
+    character: "Bruce Banner / The Hulk"
+  },
+  {
+    name: "Chris Hemsworth",
+    character: "Thor"
+  }
+]

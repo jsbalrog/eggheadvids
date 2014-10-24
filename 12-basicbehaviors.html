@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Behaviors</title>
+</head>
+<body>
+
+<div ng-app="behaviorApp">
+  <div enter>I'm content</div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+<script type="text/javascript">
+  var app = angular.module("behaviorApp", []);
+
+  app.directive("enter", function () {
+    // syntactic sugar for return link: { function() }
+    return function(scope, element) {
+      element.bind("mouseenter", function() {
+        console.log("I'm inside!");
+      })
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sharing Data Between Controllers</title>
+</head>
+<body>
+
+<div ng-app="myApp">
+
+  <!-- 1. Currently data.message binds to all enclosed controllers because they also have data.message models, and are enclosed.
+       commenting this input out would un-bind it. -->
+  <!--<input type="text" ng-model="data.message">
+  <h1>{{ data.message }}</h1>-->
+
+  <div ng-controller="FirstCtrl">
+    <input type="text" ng-model="data.message">
+    <h1>{{ data.message }}</h1>
+  </div>
+
+  <div ng-controller="SecondCtrl">
+    <input type="text" ng-model="data.message">
+    <h1>{{ data.message }}</h1>
+  </div>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+<script type="text/javascript">
+
+  // To be able to share data when 1. is in force, create an app and use app.factory to create a service
+  // to share data with. Then, inject that service in the controllers that will be sharing data.
+  var myApp = angular.module('myApp', []);
+
+  myApp.factory('SharedDataService', function() {
+    return {
+      message: "I am data from a service"
+    };
+  });
+
+  function FirstCtrl($scope, SharedDataService) {
+    $scope.data = SharedDataService;
+  }
+
+  function SecondCtrl($scope, SharedDataService) {
+    $scope.data = SharedDataService;
+  }
+</script>
+</body>
+</html>
